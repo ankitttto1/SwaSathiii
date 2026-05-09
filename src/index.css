@@ -2,6 +2,12 @@
 
 @import "tailwindcss";
 
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

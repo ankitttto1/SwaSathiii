@@ -6,7 +6,11 @@ import ResultCard from './ResultCard';
 
 type Mode = 'idle' | 'uploading' | 'analyzing' | 'result' | 'error';
 
-export default function WasteScanner() {
+interface Props {
+  user?: any;
+}
+
+export default function WasteScanner(_: Props) {
   const [mode, setMode] = useState<Mode>('idle');
   const [preview, setPreview] = useState<string | null>(null);
   const [result, setResult] = useState<WasteResult | null>(null);
