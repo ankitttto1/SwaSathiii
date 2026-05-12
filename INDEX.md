@@ -1,4 +1,4 @@
-# SwaSathiii - Complete Project Index
+# SwachhSaathi - Complete Project Index
 
 ## 📚 Documentation Files
 
@@ -163,8 +163,8 @@ vercel --prod
 netlify deploy --prod --dir=dist
 
 # Docker
-docker build -t swasathiii .
-docker run -p 3000:3000 swasathiii
+docker build -t swachhsaathi .
+docker run -p 3000:3000 swachhsaathi
 ```
 
 ### Supabase

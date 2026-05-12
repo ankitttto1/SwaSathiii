@@ -47,29 +47,29 @@ export default function EcoTips({ onClose }: Props) {
   ];
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-fade-in">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-scale-in max-h-screen overflow-y-auto">
+    <div className="fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center z-50 p-4 animate-fade-in">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl max-w-md w-full p-8 animate-scale-in max-h-screen overflow-y-auto border border-gray-100 dark:border-gray-800">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-extrabold text-gray-900">Eco Tips & Facts</h2>
+          <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white">Eco Tips & Facts</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
             aria-label="Close"
           >
-            <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-6 h-6 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
         {/* Tip Card */}
-        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 mb-6 border border-green-100">
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/40 dark:to-emerald-950/30 rounded-2xl p-6 mb-6 border border-green-100 dark:border-green-900/50">
           <div className="text-4xl mb-3">{tips[currentTip].icon}</div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">{tips[currentTip].title}</h3>
-          <p className="text-gray-600 mb-4 leading-relaxed">{tips[currentTip].description}</p>
-          <div className="bg-white rounded-lg p-3 border-l-4 border-green-500">
-            <div className="text-xs text-gray-500 font-semibold mb-1">DID YOU KNOW?</div>
-            <div className="text-sm text-gray-700 font-medium">{tips[currentTip].fact}</div>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{tips[currentTip].title}</h3>
+          <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{tips[currentTip].description}</p>
+          <div className="bg-white dark:bg-gray-950 rounded-lg p-3 border-l-4 border-green-500 dark:border-green-400">
+            <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold mb-1">DID YOU KNOW?</div>
+            <div className="text-sm text-gray-700 dark:text-gray-300 font-medium">{tips[currentTip].fact}</div>
           </div>
         </div>
 
@@ -78,21 +78,21 @@ export default function EcoTips({ onClose }: Props) {
           <button
             onClick={() => setCurrentTip(Math.max(0, currentTip - 1))}
             disabled={currentTip === 0}
-            className="p-2 rounded-lg hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            <svg className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <div className="text-sm text-gray-500 font-medium">
+          <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">
             {currentTip + 1} of {tips.length}
           </div>
           <button
             onClick={() => setCurrentTip(Math.min(tips.length - 1, currentTip + 1))}
             disabled={currentTip === tips.length - 1}
-            className="p-2 rounded-lg hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            <svg className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -105,7 +105,7 @@ export default function EcoTips({ onClose }: Props) {
               key={i}
               onClick={() => setCurrentTip(i)}
               className={`w-2 h-2 rounded-full transition-all ${
-                i === currentTip ? 'bg-green-600 w-6' : 'bg-gray-300'
+                i === currentTip ? 'bg-green-600 dark:bg-green-500 w-6' : 'bg-gray-300 dark:bg-gray-600'
               }`}
             />
           ))}

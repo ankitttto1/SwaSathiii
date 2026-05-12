@@ -1,6 +1,6 @@
-# SwaSathiii - AI-Powered Waste Classification Platform
+# SwachhSaathi - AI-Powered Waste Classification Platform
 
-A modern, fully-featured waste classification web application built with React, TypeScript, Vite, Tailwind CSS, and Supabase. SwaSathiii leverages AI to help users identify waste types, learn proper disposal methods, and track their environmental impact.
+A modern, fully-featured waste classification web application built with React, TypeScript, Vite, Tailwind CSS, and Supabase. SwachhSaathi leverages AI to help users identify waste types, learn proper disposal methods, and track their environmental impact.
 
 ## Features
 

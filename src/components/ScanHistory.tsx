@@ -44,7 +44,7 @@ export default function ScanHistory() {
 
   if (loading) {
     return (
-      <section id="history" className="py-20 bg-white">
+      <section id="history" className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[1, 2, 3, 4].map((i) => (
@@ -59,14 +59,14 @@ export default function ScanHistory() {
   if (records.length === 0) return null;
 
   return (
-    <section id="history" className="py-20 bg-white">
+    <section id="history" className="py-20 bg-white dark:bg-gray-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full mb-4">
+          <span className="inline-block px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-sm font-semibold rounded-full mb-4">
             Recent Scans
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Scan History</h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Scan History</h2>
+          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             Search and filter your waste classifications.
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function ScanHistory() {
             placeholder="Search by waste type..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition-all"
+            className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 dark:focus:ring-green-900/50 transition-all"
           />
 
           <div className="flex flex-wrap gap-2">
@@ -87,7 +87,7 @@ export default function ScanHistory() {
               className={`px-4 py-2 rounded-lg font-semibold transition-all ${
                 filter === 'all'
                   ? 'bg-green-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
             >
               All
@@ -101,7 +101,7 @@ export default function ScanHistory() {
                   className={`px-4 py-2 rounded-lg font-semibold transition-all flex items-center gap-2 ${
                     filter === cat
                       ? 'text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                   style={{
                     backgroundColor: filter === cat ? data.binColor : undefined,
@@ -118,7 +118,7 @@ export default function ScanHistory() {
         {/* Results */}
         {filteredRecords.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500">No scans found matching your filters.</p>
+            <p className="text-gray-500 dark:text-gray-400">No scans found matching your filters.</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -128,7 +128,7 @@ export default function ScanHistory() {
               return (
                 <div
                   key={record.id}
-                  className="bg-white border border-green-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 text-center"
+                  className="bg-white dark:bg-gray-900 border border-green-100 dark:border-gray-800 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 text-center"
                 >
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mx-auto mb-2 shadow-sm"
@@ -136,11 +136,11 @@ export default function ScanHistory() {
                   >
                     {data.icon}
                   </div>
-                  <div className="text-sm font-bold text-gray-800">{data.label}</div>
-                  <div className="text-xs text-gray-400 mt-1">
+                  <div className="text-sm font-bold text-gray-800 dark:text-gray-100">{data.label}</div>
+                  <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                     {Math.round(record.confidence * 100)}% match
                   </div>
-                  <div className="text-xs text-gray-300 mt-1">
+                  <div className="text-xs text-gray-300 dark:text-gray-600 mt-1">
                     {date.toLocaleDateString()}
                   </div>
                 </div>
@@ -150,17 +150,17 @@ export default function ScanHistory() {
         )}
 
         {/* Stats */}
-        <div className="mt-10 pt-8 border-t border-green-100 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="mt-10 pt-8 border-t border-green-100 dark:border-gray-800 grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="text-center">
-            <div className="text-2xl font-extrabold text-green-600">{records.length}</div>
-            <div className="text-sm text-gray-500">Total Scans</div>
+            <div className="text-2xl font-extrabold text-green-600 dark:text-green-400">{records.length}</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">Total Scans</div>
           </div>
           {categories.map((cat) => {
             const count = records.filter(r => r.category === cat).length;
             return (
               <div key={cat} className="text-center">
-                <div className="text-2xl font-extrabold text-gray-800">{count}</div>
-                <div className="text-sm text-gray-500">{wasteData[cat].label}</div>
+                <div className="text-2xl font-extrabold text-gray-800 dark:text-gray-100">{count}</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">{wasteData[cat].label}</div>
               </div>
             );
           })}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🔍 SwaSathiii Build Verification"
+echo "🔍 SwachhSaathi Build Verification"
 echo "=================================="
 echo ""
 

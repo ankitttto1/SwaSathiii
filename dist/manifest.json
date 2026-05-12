@@ -1,6 +1,6 @@
 {
-  "name": "SwaSathiii - Waste Classification",
-  "short_name": "SwaSathiii",
+  "name": "SwachhSaathi - Waste Classification",
+  "short_name": "SwachhSaathi",
   "description": "AI-powered waste classification for a cleaner planet",
   "start_url": "/",
   "scope": "/",
@@ -25,7 +25,7 @@
   "categories": ["productivity", "utilities"],
   "screenshots": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%23f0fdf4' width='540' height='720'/><rect fill='%23059669' width='540' height='200'/><text x='50%' y='100' dominant-baseline='middle' text-anchor='middle' font-size='48' fill='white' font-family='system-ui' font-weight='bold'>SwaSathiii</text></svg>",
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%23f0fdf4' width='540' height='720'/><rect fill='%23059669' width='540' height='200'/><text x='50%' y='100' dominant-baseline='middle' text-anchor='middle' font-size='34' fill='white' font-family='system-ui' font-weight='bold'>SwachhSaathi</text></svg>",
       "sizes": "540x720",
       "type": "image/svg+xml",
       "form_factor": "narrow"

@@ -30,10 +30,10 @@ export default function Leaderboard() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex justify-center">
-            <div className="w-12 h-12 border-4 border-green-200 border-t-green-600 rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-green-200 dark:border-green-900 border-t-green-600 dark:border-t-green-500 rounded-full animate-spin" />
           </div>
         </div>
       </section>
@@ -41,28 +41,28 @@ export default function Leaderboard() {
   }
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-950">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full mb-4">
+          <span className="inline-block px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-sm font-semibold rounded-full mb-4">
             Community Leaders
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Top Contributors</h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Top Contributors</h2>
+          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             Celebrate the community members making the biggest environmental impact.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-8 bg-green-50 rounded-2xl p-1 w-fit mx-auto">
+        <div className="flex gap-2 mb-8 bg-green-50 dark:bg-gray-900 rounded-2xl p-1 w-fit mx-auto border border-green-100/80 dark:border-gray-800">
           {(['scans', 'impact'] as const).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
               className={`px-4 py-2 rounded-xl font-semibold transition-all ${
                 tab === t
-                  ? 'bg-white text-green-700 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-white dark:bg-gray-800 text-green-700 dark:text-green-400 shadow-sm'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
               }`}
             >
               Most {t === 'scans' ? 'Scans' : 'Impact'}
@@ -80,16 +80,16 @@ export default function Leaderboard() {
             return (
               <div
                 key={leader.id}
-                className="bg-white border border-green-100 rounded-2xl p-4 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all"
+                className="bg-white dark:bg-gray-900 border border-green-100 dark:border-gray-800 rounded-2xl p-4 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all"
               >
                 <div className="text-2xl">{medal}</div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-bold text-gray-900">#{i + 1}</div>
-                  <div className="text-sm text-gray-500">{leader.email}</div>
+                  <div className="font-bold text-gray-900 dark:text-white">#{i + 1}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{leader.email}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-extrabold text-green-600">{stat}</div>
-                  <div className="text-xs text-gray-400">{unit}</div>
+                  <div className="text-2xl font-extrabold text-green-600 dark:text-green-400">{stat}</div>
+                  <div className="text-xs text-gray-400 dark:text-gray-500">{unit}</div>
                 </div>
               </div>
             );
@@ -98,7 +98,7 @@ export default function Leaderboard() {
 
         {leaders.length === 0 && (
           <div className="text-center py-10">
-            <p className="text-gray-500">Leaderboard coming soon. Be the first to make an impact!</p>
+            <p className="text-gray-500 dark:text-gray-400">Leaderboard coming soon. Be the first to make an impact!</p>
           </div>
         )}
       </div>

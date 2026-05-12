@@ -1,6 +1,6 @@
-# SwaSathiii Deployment Guide
+# SwachhSaathi Deployment Guide
 
-This guide covers deploying SwaSathiii to production environments.
+This guide covers deploying SwachhSaathi to production environments.
 
 ## Prerequisites
 
@@ -104,7 +104,7 @@ netlify deploy --prod --dir=dist
 ```bash
 # Update vite.config.ts
 # export default defineConfig({
-#   base: '/swasathiii/',
+#   base: '/swachhsaathi/',
 #   ...
 # })
 
@@ -158,8 +158,8 @@ EXPOSE 3000
 
 **Build & Deploy:**
 ```bash
-docker build -t swasathiii .
-docker run -p 3000:3000 swasathiii
+docker build -t swachhsaathi .
+docker run -p 3000:3000 swachhsaathi
 ```
 
 ### 5. Traditional Server (nginx)
@@ -168,9 +168,9 @@ docker run -p 3000:3000 swasathiii
 ```nginx
 server {
   listen 80;
-  server_name swasathiii.example.com;
+  server_name swachhsaathi.example.com;
 
-  root /var/www/swasathiii/dist;
+  root /var/www/swachhsaathi/dist;
   index index.html;
 
   location / {
@@ -240,7 +240,7 @@ Most hosting platforms provide free SSL certificates. Ensure:
 ```nginx
 server {
   listen 443 ssl http2;
-  server_name swasathiii.example.com;
+  server_name swachhsaathi.example.com;
   
   ssl_certificate /etc/ssl/certs/cert.pem;
   ssl_certificate_key /etc/ssl/private/key.pem;

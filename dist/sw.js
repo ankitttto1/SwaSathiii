@@ -1,4 +1,4 @@
-const CACHE_NAME = 'swasathiii-v1';
+const CACHE_NAME = 'swachhsaathi-v1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

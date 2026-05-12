@@ -66,7 +66,10 @@ export default function Hero() {
       {/* Wave divider */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 40 C360 80 1080 0 1440 40 L1440 80 L0 80 Z" fill="#f0fdf4" />
+          <path
+            d="M0 40 C360 80 1080 0 1440 40 L1440 80 L0 80 Z"
+            className="fill-green-50 dark:fill-gray-950"
+          />
         </svg>
       </div>
     </section>

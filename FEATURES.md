@@ -1,4 +1,4 @@
-# SwaSathiii - Complete Features List
+# SwachhSaathi - Complete Features List
 
 ## User-Facing Features
 

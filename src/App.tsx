@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
 import EcoTips from './components/EcoTips';
+import EcoChatAssistant from './components/chat/EcoChatAssistant';
 
 export default function App() {
   const [user, setUser] = useState<any>(null);
@@ -44,20 +45,26 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-green-50 flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-green-200 border-t-green-600 rounded-full animate-spin" />
+      <div className="min-h-screen bg-green-50 dark:bg-gray-950 flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-green-200 dark:border-green-900 border-t-green-600 dark:border-t-green-500 rounded-full animate-spin" />
       </div>
     );
   }
 
   if (showDashboard && user) {
     return (
-      <div className="min-h-screen bg-green-50">
+      <div className="min-h-screen bg-green-50 dark:bg-gray-950">
         <Navbar
+          layout="surface"
           user={user}
           onAuthClick={() => setShowAuth(true)}
           onTipsClick={() => setShowTips(true)}
           onDashboardClick={() => setShowDashboard(false)}
+          onSignOut={async () => {
+            await signOut();
+            setUser(null);
+            setShowDashboard(false);
+          }}
         />
         <div className="pt-16">
           <Dashboard
@@ -71,12 +78,13 @@ export default function App() {
         </div>
         {showTips && <EcoTips onClose={() => setShowTips(false)} />}
         {showAuth && <Auth onClose={() => setShowAuth(false)} onAuthSuccess={() => setShowAuth(false)} />}
+        <EcoChatAssistant />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-green-50">
+    <div className="min-h-screen bg-green-50 dark:bg-gray-950">
       <Navbar
         user={user}
         onAuthClick={() => setShowAuth(true)}
@@ -96,6 +104,7 @@ export default function App() {
         setShowDashboard(true);
       }} />}
       {showTips && <EcoTips onClose={() => setShowTips(false)} />}
+      <EcoChatAssistant />
     </div>
   );
 }
