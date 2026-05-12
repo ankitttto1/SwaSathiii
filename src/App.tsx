@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './index.css';
 import { supabase } from './lib/supabase';
-import { getCurrentUser } from './lib/auth';
+import { getCurrentUser, signOut } from './lib/auth';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
@@ -22,19 +22,24 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function checkAuth() {
+    let subscription: { unsubscribe: () => void } | undefined;
+
+    async function initAuth() {
       const currentUser = await getCurrentUser();
       setUser(currentUser);
       setLoading(false);
-
-      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-        setUser(session?.user || null);
-      });
-
-      return () => subscription?.unsubscribe();
     }
 
-    checkAuth();
+    const { data: { subscription: sub } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+    });
+    subscription = sub;
+
+    initAuth();
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
   if (loading) {
@@ -57,7 +62,8 @@ export default function App() {
         <div className="pt-16">
           <Dashboard
             user={user}
-            onSignOut={() => {
+            onSignOut={async () => {
+              await signOut();
               setUser(null);
               setShowDashboard(false);
             }}

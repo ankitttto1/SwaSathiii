@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { signUp, signIn } from '../lib/auth';
+import { signUp, signIn, resetPassword } from '../lib/auth';
 
 interface Props {
   onClose: () => void;
@@ -21,15 +21,19 @@ export default function Auth({ onClose, onAuthSuccess }: Props) {
     e.preventDefault();
     setError('');
     setLoading(true);
-    const { error: err } = await signUp(email, password, displayName);
+    const { data, error: err } = await signUp(email, password, displayName);
     if (err) {
       setError(err.message);
+    } else if (data?.user && data?.session) {
+      // Auto-confirmed (email confirmation disabled) -- user is logged in
+      onAuthSuccess();
     } else {
+      // Email confirmation required
       setSuccess('Account created! Please check your email to confirm.');
       setTimeout(() => {
         setMode('login');
         setSuccess('');
-      }, 2000);
+      }, 3000);
     }
     setLoading(false);
   };
@@ -174,13 +178,21 @@ export default function Auth({ onClose, onAuthSuccess }: Props) {
             </button>
           </form>
         ) : (
-          <form onSubmit={(e) => {
+          <form onSubmit={async (e) => {
             e.preventDefault();
             setError('');
             setLoading(true);
-            setSuccess('Check your email for reset link');
+            const { error: err } = await resetPassword(email);
+            if (err) {
+              setError(err.message);
+            } else {
+              setSuccess('Check your email for a password reset link.');
+              setTimeout(() => {
+                setMode('login');
+                setSuccess('');
+              }, 3000);
+            }
             setLoading(false);
-            setTimeout(() => setMode('login'), 2000);
           }} className="space-y-4">
             <p className="text-sm text-gray-600 mb-4">Enter your email and we'll send a password reset link.</p>
             <div>
